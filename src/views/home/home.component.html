@@ -2,10 +2,22 @@
 
     <div class="side-panel">
         <h1>Score Board</h1>
-
+        <div v-if="winner" class="start-over" @click="startOver">Start Over</div>
+        <ul class="scores" v-if="housesSortedByScore && housesSortedByScore.length">
+            <li v-for="(house, idx) in housesSortedByScore" :key="idx">
+                <span>{{ house.name }}</span>
+                <span>{{ house.score }}</span>
+            </li>
+        </ul>
 
         <div class="mt-20">
             <h2>Updates</h2>
+            <ul class="updates" v-if="sortedUpdates && sortedUpdates.length">
+                <li v-for="(update, idx) in sortedUpdates" :key="idx">
+                    <div class="date">{{ update.timestamp | formatDate }}</div>
+                    <div v-html="$options.filters.formatHouseUpdate(update)"></div>
+                </li>
+            </ul>
 
         </div>
     </div>

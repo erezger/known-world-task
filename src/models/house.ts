@@ -24,7 +24,7 @@ export default class House {
     this.position = options.position || {x: 0, y: 0};
     this.flag = options.flag || '';
     this.strength = options.strength || 5;
-    this.score = this.calcScore()
+    this.score = this.calcScore();
   }
 
   private calcScore(): number {

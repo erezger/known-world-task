@@ -11,9 +11,11 @@ export const SET_HOUSES = 'setHouses';
 export const SET_WINNER = 'setWinner';
 export const UPDATE_HOUSE = 'updateHouse';
 export const CREATE_NEW_UPDATE = 'createNewUpdate';
+export const RESET_WORLD_STATE = 'resetWorldState';
 
 // Getters types
 export const UPDATES = 'updates';
+export const SORTED_UPDATES = 'sortedUpdates';
 export const LATEST_UPDATE = 'latestUpdate';
 export const HOUSES = 'houses';
 export const KINGS_LANDING_POSITION = 'kingsLandingPosition';

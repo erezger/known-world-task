@@ -36,7 +36,7 @@ export default class HouseItem extends Vue {
   }
 
   public getImgUrl(img: string) {
-    return require('../assets/' + img)
+    return require('../assets/' + img);
   }
 
   public imageLoadError(event): void {

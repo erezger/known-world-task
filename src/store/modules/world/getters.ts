@@ -1,7 +1,7 @@
 import {GetterTree} from 'vuex';
 import {RootState} from '@/store/index';
 import {WorldState} from '@/store/modules/world/index';
-import {HOUSES, KINGS_LANDING_POSITION, LATEST_UPDATE, UPDATES, WINNER} from '@/types/world.types';
+import {HOUSES, KINGS_LANDING_POSITION, LATEST_UPDATE, SORTED_UPDATES, UPDATES, WINNER} from '@/types/world.types';
 import House from '@/models/house';
 import {IPoint} from '@/models/point';
 
@@ -9,6 +9,10 @@ export const getters: GetterTree<WorldState, RootState> = {
 
   [UPDATES](state): Array<{ house: House; steps: number; score: number; }> {
     return state.updates;
+  },
+
+  [SORTED_UPDATES](state): Array<{ house: House; steps: number; score: number; }> {
+    return state.sortedUpdates;
   },
 
   [LATEST_UPDATE](state): { house: House; steps: number; score: number; } | null {

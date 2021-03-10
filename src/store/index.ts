@@ -13,12 +13,12 @@ export interface RootState {
 }
 
 const vuexLocal = new VuexPersistence({
-  key: 'review-vuex',
+  key: 'world-vuex',
   storage: window.localStorage,
   supportCircular: true,
-  // reducer: (state: any) => ({
-  //   world: state.world,
-  // }),
+  reducer: (state: any) => ({
+    // world: state.world,
+  }),
 });
 
 const initialState: RootState = {};

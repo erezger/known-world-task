@@ -4,7 +4,6 @@ import {actions} from './actions';
 import {mutations} from './mutations';
 import {getters} from './getters';
 import {RootState} from '@/store';
-import {GroupListModel} from '@/models/group-list.model';
 import House from '@/models/house';
 import {IPoint} from '@/models/point';
 
@@ -19,6 +18,11 @@ export interface WorldState {
     steps: number;
     score: number;
   }>;
+  sortedUpdates: Array<{
+    house: House;
+    steps: number;
+    score: number;
+  }>;
 }
 
 // message state model init
@@ -28,6 +32,7 @@ export const initialState = (): WorldState => {
     winner: undefined,
     houses: [],
     updates: [],
+    sortedUpdates: [],
   };
 };
 

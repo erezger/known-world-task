@@ -53,6 +53,7 @@ export default class WorldMap extends Vue {
     color: #a58e64;
     background-color: #775f3c;
     padding: 3px;
+    cursor: pointer;
   }
 }
 </style>

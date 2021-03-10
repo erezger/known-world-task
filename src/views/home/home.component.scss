@@ -1,4 +1,5 @@
 $map-width: calc(1280px * 1.115);
+$score-board-height: 280px;
 .container {
   display: flex;
 
@@ -7,6 +8,7 @@ $map-width: calc(1280px * 1.115);
     min-width: 360px;
     width: calc(100% - #{$map-width} - 40px);
     text-align: left;
+    position: relative;
 
     ul {
       list-style: none;
@@ -16,8 +18,35 @@ $map-width: calc(1280px * 1.115);
       }
     }
 
-    ul.updates {
+    ul.scores {
+      max-height: #{$score-board-height};
+      overflow: auto;
 
+      li {
+        display: flex;
+        justify-content: space-between;
+
+        &:first-child {
+          font-weight: bold;
+        }
+      }
+    }
+
+    ul.updates {
+      max-height: calc(100vh - #{$score-board-height} - 130px);
+      overflow: auto;
+
+      .date {
+        text-decoration: underline;
+      }
+    }
+
+    .start-over {
+      position: absolute;
+      top: 30px;
+      right: 20px;
+      text-decoration: underline;
+      cursor: pointer;
     }
   }
 }

@@ -1,20 +1,21 @@
 import Vue from 'vue';
-import App from './App.vue';
+import App from './app.vue';
 import router from './router';
 import store from './store';
-import i18n from './lang/lang';
 import '@/globals/filters';
+import Notifications from 'vue-notification';
 
 import WorldMap from '@/components/world-map.vue';
 
 Vue.component('world-map', WorldMap);
+
+Vue.use(Notifications);
 
 Vue.config.productionTip = false;
 
 const eventsHub = new Vue({
   router,
   store,
-  i18n,
   render: (h) => h(App),
 }).$mount('#app');
 
