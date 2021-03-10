@@ -1,7 +1,7 @@
 import {Component, Vue, Watch} from 'vue-property-decorator';
 import {Action, Getter, Mutation} from 'vuex-class';
 import {StoreNamespace} from '@/globals/store-namespace';
-import {GET_HOUSES, HOUSES, INIT_UPDATES, LATEST_UPDATE, UPDATE_HOUSE, UPDATES} from '@/types/world.types';
+import {GET_HOUSE_BY_NAME, GET_HOUSES, HOUSES, INIT_UPDATES, LATEST_UPDATE, UPDATE_HOUSE} from '@/types/world.types';
 import House from '@/models/house';
 import {IUpdate} from '@/models/update';
 import {IPoint} from '@/models/point';
@@ -11,6 +11,7 @@ export default class HomeComponent extends Vue {
 
   @Action(GET_HOUSES, StoreNamespace.WORLD) public getHouses: () => void;
   @Action(INIT_UPDATES, StoreNamespace.WORLD) public initUpdates: () => void;
+  @Action(GET_HOUSE_BY_NAME, StoreNamespace.WORLD) public getHouseByName: (houseName: string) => Promise<House>;
   // @Action(SORT_LIBRARY_LIST, StoreNamespace.LIBRARY) public sortLibraryList: () => void;
   // @Action(UPDATE_LIBRARY_LIST_ITEM, StoreNamespace.LIBRARY) public updateLibraryListItem: (item: LibraryItemModel) => void;
 
@@ -25,9 +26,15 @@ export default class HomeComponent extends Vue {
   // @Getter(GROUPED_LIST, StoreNamespace.LIBRARY) public groupedList!: GroupListModel;
   // @Getter(IS_LIST_VIEW, StoreNamespace.LIBRARY) public isListView!: boolean;
 
-  public mounted(): void {
+  public kingHouse!: House;
+
+  public async mounted() {
     this.initUpdates();
     this.getHouses();
+    this.kingHouse = await this.getHouseByName('Lannister');
+    // this.getHouseByName('Lannister').then((house) => {
+    //   this.kingHouse = house
+    // });
   }
 
   /**
@@ -40,7 +47,9 @@ export default class HomeComponent extends Vue {
     const houseToUpdate = latestUpdate.house;
     const houseX = latestUpdate.house.position.x;
     const houseY = latestUpdate.house.position.y;
-    houseToUpdate.position = this.calcNewPosition(houseX, houseY, houseX + latestUpdate.steps, houseY + latestUpdate.steps, latestUpdate.steps);
+    const kingHouseX = this.kingHouse.position.x;
+    const kingHouseY = this.kingHouse.position.y;
+    houseToUpdate.position = this.calcNewPosition(houseX, houseY, kingHouseX, kingHouseY, latestUpdate.steps);
     this.updateHouse(houseToUpdate);
     return;
   }
@@ -54,7 +63,9 @@ export default class HomeComponent extends Vue {
    * @param length number of steps towards destination
    */
   public calcNewPosition(x1: number, y1: number, x2: number, y2: number, length: number): IPoint {
-    // debugger
+    if (x1 === x2 && y1 === y2) {
+      // do battle;
+    }
     return {x: x2, y: y2}
   }
 }

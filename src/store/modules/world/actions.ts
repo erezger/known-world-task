@@ -4,7 +4,7 @@ import {WorldState} from '@/store/modules/world/index';
 import WorldService from '@/globals/world.service';
 import {$httpClient} from '@/globals/http-client';
 import {authErrorInterceptor} from '@/globals/error.interceptors';
-import {CREATE_NEW_UPDATE, GET_HOUSES, INIT_UPDATES, SET_HOUSES} from '@/types/world.types';
+import {CREATE_NEW_UPDATE, GET_HOUSE_BY_NAME, GET_HOUSES, INIT_UPDATES, SET_HOUSES} from '@/types/world.types';
 
 const worldService = new WorldService();
 $httpClient.addResponseInterceptor(authErrorInterceptor);
@@ -30,5 +30,11 @@ export const actions: ActionTree<WorldState, RootState> = {
         }
       }, rand);
     }());
+  },
+
+  [GET_HOUSE_BY_NAME]: (
+    {state, commit}: ActionContext<WorldState, RootState>,
+    houseName: string) => {
+    return state.houses.find((h) => h.name === houseName);
   },
 };
