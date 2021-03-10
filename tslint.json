@@ -1,0 +1,36 @@
+{
+  "defaultSeverity": "warning",
+  "extends": [
+    "tslint:recommended"
+  ],
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**",
+      "src/components/dashboard/**",
+      "src/views/Dashboard/**",
+      "src/views/FixedPlugin",
+      "vue.config.js",
+      "requestor.ts"
+    ]
+  },
+  "rules": {
+    "quotemark": [
+      true,
+      "single"
+    ],
+    "indent": [
+      true,
+      "spaces",
+      2
+    ],
+    "no-var-requires": false,
+    "interface-name": false,
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "no-unnecessary-initializer": true,
+    "no-consecutive-blank-lines": false,
+    "semicolon": false,
+    "max-line-length": false,
+    "no-string-literal": false
+  }
+}

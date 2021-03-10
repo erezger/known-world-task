@@ -1,0 +1,23 @@
+$map-width: calc(1280px * 1.115);
+.container {
+  display: flex;
+
+  .side-panel {
+    padding: 20px;
+    min-width: 360px;
+    width: calc(100% - #{$map-width} - 40px);
+    text-align: left;
+
+    ul {
+      list-style: none;
+
+      li {
+        padding: 5px;
+      }
+    }
+
+    ul.updates {
+
+    }
+  }
+}
