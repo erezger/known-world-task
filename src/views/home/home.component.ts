@@ -65,7 +65,10 @@ export default class HomeComponent extends Vue {
   public calcNewPosition(x1: number, y1: number, x2: number, y2: number, length: number): IPoint {
     if (x1 === x2 && y1 === y2) {
       // do battle;
+      alert('do battle');
     }
-    return {x: x2, y: y2}
+    const newX = x1 > x2 ? x1 - length : x1 + length;
+    const newY = y1 > y2 ? y1 - length : y1 + length;
+    return {x: newX, y: newY}
   }
 }
