@@ -7,6 +7,7 @@ export class Router {
 
   public routes(app): void {
 
+    // check ok page
     app.route('/')
       .get((req: Request, res: Response) => {
         res.status(200).send({
@@ -14,9 +15,9 @@ export class Router {
         })
       });
 
-    // world routes
+    // house routes
     app.route('/api/house')
-      // get all users
+      // get all houses
       .get(this.houseController.getAllHouses);
 
   }

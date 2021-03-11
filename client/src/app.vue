@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <router-view/>
+
+    <!-- Notify message when winner is set  -->
     <notifications group="world"/>
   </div>
 </template>

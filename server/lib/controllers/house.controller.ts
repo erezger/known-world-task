@@ -2,12 +2,12 @@ import {NextFunction, Request, Response} from 'express';
 import houseModel from '../models/house';
 import HttpException from '../exceptions/http-exception';
 
-const ObjectId = require('mongodb').ObjectID;
-
 export default class HouseController {
 
+  // get all houses
   public getAllHouses(req: Request, res: Response, next: NextFunction) {
     try {
+      // find houses
       houseModel.find({}, (err, houses) => {
         if (err) {
           res.send(err);

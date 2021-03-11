@@ -10,6 +10,7 @@ export class MongooseDb {
       useNewUrlParser: true,
       useCreateIndex: true
     }).then(() => {
+      // insert json file into db if not exist
       House.insertMany(data.houses, {ordered: false}, err => err);
       console.log('connected to database');
     }).catch((e) => {
