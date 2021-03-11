@@ -9,8 +9,6 @@ import {
   UPDATE_HOUSE,
 } from '@/types/world.types';
 import House from '@/models/house';
-import {Vue} from 'vue-property-decorator';
-import {eventsHub} from '@/main';
 
 export const mutations: MutationTree<WorldState> = {
 

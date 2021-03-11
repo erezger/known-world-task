@@ -15,7 +15,8 @@ export const actions: ActionTree<WorldState, RootState> = {
     worldService.getHouses()
       .subscribe(
         (data) => {
-          commit(SET_HOUSES, data.houses);
+          commit(SET_HOUSES, data);
+          // commit(SET_HOUSES, data.houses);
         },
       );
   },

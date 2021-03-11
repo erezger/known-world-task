@@ -1,16 +1,17 @@
 import {Observable} from 'rxjs';
 import {$httpClient} from '@/globals/http-client';
-import {BaseResponse} from '@/models/base-response.model';
 import House from '@/models/house';
 
 export default class WorldService {
   private readonly baseApi: string;
 
   constructor() {
-    this.baseApi = 'init.json';
+    this.baseApi = 'api';
+    // this.baseApi = 'init.json';
   }
 
-  public getHouses(): Observable<{ houses: House[] }> {
-    return $httpClient.get(this.baseApi);
+  public getHouses(): Observable<House[]> {
+    return $httpClient.get(this.baseApi + '/house');
+    // return $httpClient.get(this.baseApi);
   }
 }

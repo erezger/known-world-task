@@ -35,8 +35,8 @@ export default class HomeComponent extends Vue {
   public kingHouse!: House;
 
   public created() {
-    this.initUpdates();
     this.getHouses();
+    this.initUpdates();
   }
 
   /**
